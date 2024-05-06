@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<div class="container mx-auto px-4 py-6" *ngFor="let bien of biens" >
+    <div class="bg-white shadow-lg rounded-lg p-6" >
+        <div class="flex flex-col md:flex-row">
+            <div class="md:flex-shrink-0">
+                <img class="rounded-lg md:w-56" [src]="bien.imageUrl" alt="Image du produit">
+            </div>
+            <div class="mt-4 md:mt-0 md:ml-6">
+                <h2 class="text-xl font-bold text-gray-900">{{bien.rue}} , {{ bien.cp}} {{ bien.commune }}</h2>
+                
+                <div class="flex mt-3">
+                    <span class="text-green-500 mr-3">Prix par jours: $ {{bien.prix}}</span>
+                </div>
+
+                <div class="flex mt-3">
+                    <span class="text-green-500 mr-3">Note moyenne: {{bien.moyenne}} / 10</span>
+                </div>
+
+
+                <div class="flex mt-3">
+                    
+                    <a [routerLink]="['/modifier',bien.idBien]" class="mt-6 mr-10" >
+                        <p>
+                            modifier
+                        </p>                        
+                    </a>
+                
+                    <div class="mt-6">
+                        <button (click)="supprimerBien(bien.idBien)" class="px-4 py-2 bg-red-500 text-white text-xs font-bold uppercase rounded hover:bg-red-600">Supprimer</button>
+                    </div>
+    
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
